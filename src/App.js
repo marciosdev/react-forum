@@ -8,10 +8,9 @@ function App() {
   return (
     <div className="App">
       <h1>My first project ReactJS</h1>
-      <Comment />
-      <Comment />
-      <Comment />
-      <Comment />
+      <Comment name="John" mail="john@gmail.com" >
+        Olá eu sou a mensagem.
+      </Comment>
     </div>
   );
 }
