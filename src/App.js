@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import './App.css'
 
-import Comment from './components/Comment'
+import Comments from './components/Comment'
 
 
 class App extends Component {
   
   state = {
-    comment: [
+    comments: [
       {
         name: 'John',
         mail: 'john@gmail.com',
@@ -26,14 +26,14 @@ class App extends Component {
     ]
   }
 
-  adicionarComentario = ()  => {
-    const novoComentario = {
+  newComment = ()  => {
+    const newComment = {
       name: 'Sidya',
       mail: 'Sidya@gmail.com',
       message: 'Hi dear'
     }
     
-    this.setState({ comment: [...this.state.comment, novoComentario] })
+    this.setState({ comments: [...this.state.comments, newComment] })
 
   }
   
@@ -43,14 +43,14 @@ class App extends Component {
         <h1>My ReactJS Forum</h1>
 
         {
-          this.state.comment.map((comment, indice)=> (
-            <Comment key={indice} name={comment.name} mail={comment.mail} >
+          this.state.comments.map((comment, indice)=> (
+            <Comments key={indice} name={comment.name} mail={comment.mail} >
               {comment.message}
-            </Comment>
+            </Comments>
 
           ) )
         }
-      <button onClick={this.adicionarComentario}>Comentar</button>  
+      <button onClick={this.newComment}>Add comment</button>  
       </div>
     );
   }

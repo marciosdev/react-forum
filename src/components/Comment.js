@@ -1,7 +1,7 @@
 import React from 'react'
 import './Comment.css'
 
-const Comment = props => (
+const Comments = props => (
     <>
         <div className="Comment">
             <h2>{props.name}</h2>
@@ -12,4 +12,4 @@ const Comment = props => (
     </>
 );
 
-export default Comment;
+export default Comments;
