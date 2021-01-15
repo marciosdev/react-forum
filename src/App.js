@@ -1,18 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
+
+import Comment from './components/Comment'
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          This is my first project RreactJS.
-        </p>
-        
-      </header>
+      <h1>My first project ReactJS</h1>
+      <Comment />
+      <Comment />
+      <Comment />
+      <Comment />
     </div>
   );
 }
 
-export default App;
+export default App
