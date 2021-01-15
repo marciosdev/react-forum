@@ -23,20 +23,30 @@ class App extends Component {
         mail: 'Celina@gmail.com',
         message: 'Hello Celina'
       }
-    ]
+    ],
+    newComment: {
+      name: '',
+      mail: '',
+      message: ''
+    }
   }
 
-  newComment = ()  => {
-    const newComment = {
-      name: 'Sidya',
-      mail: 'Sidya@gmail.com',
-      message: 'Hi dear'
-    }
+  newComment = event  => {
+
+    event.preventDefault();
+
+    const newComment = {...this.state.newComment}
     
     this.setState({ comments: [...this.state.comments, newComment] })
 
   }
-  
+
+  inputValue = event => {
+    const { name, value } = event.target
+    this.setState({ newComment: {...this.state.newComment, [name]: value}})
+  }
+
+
   render(){
     return (
       <div className="App">
@@ -48,9 +58,24 @@ class App extends Component {
               {comment.message}
             </Comments>
 
-          ) )
+          ))
         }
-      <button onClick={this.newComment}>Add comment</button>  
+      
+        <form method="post" onSubmit={this.newComment}>
+          <h2>New comment</h2>
+          <div>
+            <input type="text" name="name" value={this.state.newComment.name} onChange={this.inputValue} placeholder="Enter you name" />
+          </div>
+          <div>
+            <input type="text" name="mail" value={this.state.newComment.mail} onChange={this.inputValue} placeholder="Enter you mail" />
+          </div>
+          <div>
+            <textarea type="textarea" name="message" value={this.state.newComment.message} onChange={this.inputValue} rows="4" placeholder="Enter your comment" />
+          </div>
+          <button type="submit">Add comment</button>
+        </form>
+
+
       </div>
     );
   }
