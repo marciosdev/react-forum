@@ -37,8 +37,15 @@ class App extends Component {
 
     const newComment = {...this.state.newComment}
     
-    this.setState({ comments: [...this.state.comments, newComment] })
+    this.setState({ comments: [...this.state.comments, newComment], newComment: { name : '', mail: '', message : ''}  })
 
+  }
+
+  deleteComment = comment => {
+    let list = this.state.comments;
+    list = list.filter(c => c !== comment)
+
+    this.setState({comments: list})
   }
 
   inputValue = event => {
@@ -54,7 +61,7 @@ class App extends Component {
 
         {
           this.state.comments.map((comment, indice)=> (
-            <Comments key={indice} name={comment.name} mail={comment.mail} >
+            <Comments key={indice} name={comment.name} mail={comment.mail} onRemove={this.deleteComment.bind(this, comment)} >
               {comment.message}
             </Comments>
 
